@@ -118,5 +118,20 @@ export const photos = [
         src: 'https://images.unsplash.com/photo-1663877254454-5e669a7b27e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
         width: 3.5,
         height: 4
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1663878660749-507fc3048125?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=918&q=80',
+        width: 3.5,
+        height: 4
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1664072844818-082486c29daf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+        width: 3,
+        height: 4
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=924&q=80',
+        width: 3,
+        height: 4
     }
 ];
