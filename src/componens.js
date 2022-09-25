@@ -1,25 +1,37 @@
-
 import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
+import { youtubeLink } from './videos';
 
 export const HomePage = () => {
 
-    /* 
-        useEffect(() => {
-            pictureHandler();
-            videoHandler();
-        }, []); */
+    const SampleVideo = () => {
 
-    const VideoHandler = () => {
+        let videoIndex = "";
+        youtubeLink.forEach((e, i) => {
+            videoIndex = i;
+        })
+        
+        const min = 0;
+        const max = videoIndex;
+        const randomVideoIndex = Math.round(min + Math.random() * (max - min));
+        let randomVideo = "";
+
+        youtubeLink.forEach((e, i) => {
+            if (i === randomVideoIndex) { randomVideo = e.src }
+        })
+
         return (
-            <h4>A videoHandler működik!</h4>
+            <div className="m-3 d-flex justify-content-around">
+                <iframe width="450" height="250" src={randomVideo} title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+            </div>
         )
     }
 
-    const PictureHandler = () => {
 
+    const SamplePicture = () => {
         let photoIndex = "";
 
         photos.forEach((e, i) => {
@@ -32,12 +44,12 @@ export const HomePage = () => {
         let randomPhoto = "";
 
         photos.forEach((e, i) => {
-            if (i === randomPhotoIndex) {randomPhoto = e.src }
+            if (i === randomPhotoIndex) { randomPhoto = e.src }
         })
 
         return (
-            <div className="m-3">
-                <img src={randomPhoto} alt={randomPhotoIndex} style={{ height: '300px', }} />
+            <div className="m-3 d-flex justify-content-around">
+                <a href={randomPhoto}><img src={randomPhoto} alt={randomPhotoIndex} style={{ height: '300px'}} /></a>
             </div>
         )
     }
@@ -45,20 +57,25 @@ export const HomePage = () => {
     return (
         <div className="bg-warning">
             <h1 className="text-center">Kezdőoldal</h1>
+            <hr />
             <h3 className="px-3">Videók:</h3>
-            <div className="row">
-                <VideoHandler />
+            <div className="row">               
+                <div className='col'><SampleVideo /></div>
+                <div className='col'><SampleVideo /></div>
+                <div className='col'><SampleVideo /></div>
             </div>
+            <hr />
             <h3 className="px-3">Képek:</h3>
             <div className="row text-center">
-                <div className='col'><PictureHandler /></div>
-                <div className='col'><PictureHandler /></div>
-                <div className='col'><PictureHandler /></div>
-                <div className='col'><PictureHandler /></div>
+                <div className='col'><SamplePicture /></div>
+                <div className='col'><SamplePicture /></div>
+                <div className='col'><SamplePicture /></div>
+                <div className='col'><SamplePicture /></div>
             </div>
         </div>
     )
 };
+
 
 export const PicturesPage = () => {
 
@@ -97,27 +114,26 @@ export const PicturesPage = () => {
     )
 }
 
+
 export const VideoPage = () => {
+
     return (
         <div className="bg-warning text-center">
             <h1 className="text-center">Kedvenc videóim</h1>
 
             <div className="row d-flex justify-content-around">
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/MdnE-7IpaD8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/KATEnhTYGfE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/3wh7nHSp8Ic" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/uT4cEV1ijlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/VJcEDuOAWVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/UI5qaoZQ5G4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/LLSqc-p4UhI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/aVAOYY39wxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                <div className="col m-3"><iframe width="450" height="250" src="https://www.youtube.com/embed/Ul3y1LXxzdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                {youtubeLink.map((element, index) => {
+                    return <React.Fragment key={index}>
+                        <div className="col m-3"><iframe width="450" height="250" src={element.src} title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe></div>
+                    </React.Fragment>
+                })}
             </div>
 
         </div>
-
     )
 }
+
 
 export const AccountPage = () => {
 
